@@ -1,17 +1,21 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 3
+      Priority
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<ion-content class="ion-padding" > 
+  <ion-item *ngFor="let task of tasks" class="ion-margin-top">
+    <ion-label (click)="presentModal(task)">{{task.content}}</ion-label>
+    <ion-icon slot="end" name="trash-outline" (click)="presentAlert(task.id)"></ion-icon>
+    {{task.date | date}}
+    <ion-radio-group slot="start">
+      <ion-checkbox  [(ngModel)]="task.isDone" (ionChange)="updateProgresBar(task)" slot="start"></ion-checkbox>
+    </ion-radio-group>
+  </ion-item>
 </ion-content>
+
+<!-- Done: {{progress * 100 | number : '1.0-2'}}%
+<ion-progress-bar color="danger" [value]="progress"></ion-progress-bar> -->

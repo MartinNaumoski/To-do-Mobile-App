@@ -1,30 +1,29 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar color="primary">
-    <ion-title>
-      Create task
-    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon (click)="dismiss()" name="close-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title>Edit task</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding ion-margin-top">
-
   <ion-item>
     <ion-label position="floating">Add content</ion-label>
-    <ion-input [(ngModel)]="task.content"></ion-input>
+    <ion-input [value]="task.content" id="content"></ion-input>
   </ion-item>
   <ion-item class="ion-margin-top">
     <ion-label position="floating">Pick a date</ion-label>
-    <ion-datetime [(ngModel)]="task.date" display-timezone="utc"></ion-datetime>
+    <ion-datetime [value]="task.date" id="date" display-timezone="utc"></ion-datetime>
   </ion-item>
   <ion-item class="ion-margin-top">
     <ion-label position="start">Is priority</ion-label>
-    <ion-checkbox [(ngModel)]="task.isPriority" id="isPriority"></ion-checkbox>
+    <ion-checkbox [checked]="task.isPriority" id="isPriority" ></ion-checkbox>
   </ion-item>
 </ion-content>
 
-
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button color="danger" (click)="createTask()">
-    <ion-icon name="add"></ion-icon>
+  <ion-fab-button color="danger" (click)="editTask()">
+    <ion-icon name="create-outline"></ion-icon>
   </ion-fab-button>
 </ion-fab>
